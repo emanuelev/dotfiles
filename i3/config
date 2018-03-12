@@ -197,14 +197,21 @@ client.unfocused #369be2 #269be2 #93a1a1 #586e75
 client.urgent #cb4b16 #dc322f #fdf6e3 #dc322f
 
 exec_always --no-startup-id  "setxkbmap -v -layout gb"
-exec_always --no-startup-id  "xrandr --output DVI-I-1 --auto --right-of DP-1"
+exec_always --no-startup-id  "xrandr --output DP-2 --auto --right-of eDP-1-1"
+# exec_always --no-startup-id  "xrandr --dpi 141"
+# exec_always --no-startup-id  "xrandr --output eDP-1-1 --scale 1.2x1.2 --panning 2304x1296"
+exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id redshift -l 51.4988:0.1749 -m randr &
 exec --no-startup-id dropbox start &
 exec --no-startup-id nm-applet &
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/hexagons.jpg &
+exec --no-startup-id feh --bg-fill ~/Pictures/mountains.jpg &
 
 # Screen locking
 bindsym control+mod1+l exec  "~/.config/i3/lock.sh"
 exec --no-startup-id xautolock -time 10 -locker "~/.config/i3/lock.sh" &
 # Exec nautilus no-desktop
 bindsym $mod+n exec thunar
+
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
